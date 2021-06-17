@@ -1,0 +1,24 @@
+{
+  "name": "rescript-d3",
+  "version": "1.0.0-alpha.0",
+  "description": "ReScript bindings to Day.js library.",
+  "repository": "git@github.com:thomaszdxsn/rescript-dayjs.git",
+  "author": "thomaszdxsn <thomaszdxsn@icloud.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rescript",
+    "start": "rescript build -with-deps -w",
+    "clean": "rescript clean"
+  },
+  "keywords": [
+    "d3",
+    "rescript"
+  ],
+  "devDependencies": {
+    "rescript": "^9.1.4",
+    "d3": "^7.0.0"
+  },
+  "peerDependencies": {
+    "d3": "^7.0.0"
+  }
+}
