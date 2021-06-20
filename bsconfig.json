@@ -1,15 +1,21 @@
 {
-    "name": "rescript-dayjs",
-    "version": "1.0.0-alpha.0",
-    "sources": [
-      {
-        "dir": "src",
-        "subdirs": true
-      }
-    ],
-    "package-specs": {
-      "module": "es6",
-      "in-source": true
+  "name": "rescript-dayjs",
+  "version": "1.0.0-alpha.0",
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
     },
-    "suffix": ".bs.js"
-  }
+    {
+      "dir": "test",
+      "subdirs": true,
+      "type": "dev"
+    }
+  ],
+  "package-specs": {
+    "module": "es6",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "bs-dev-dependencies": ["rescript-test"]
+}

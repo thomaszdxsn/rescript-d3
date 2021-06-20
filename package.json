@@ -5,18 +5,21 @@
   "repository": "git@github.com:thomaszdxsn/rescript-dayjs.git",
   "author": "thomaszdxsn <thomaszdxsn@icloud.com>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "build": "rescript",
     "start": "rescript build -with-deps -w",
-    "clean": "rescript clean"
+    "clean": "rescript clean",
+    "test": "retest test/*.bs.js"
   },
   "keywords": [
     "d3",
     "rescript"
   ],
   "devDependencies": {
+    "d3": "^7.0.0",
     "rescript": "^9.1.4",
-    "d3": "^7.0.0"
+    "rescript-test": "^3.0.0"
   },
   "peerDependencies": {
     "d3": "^7.0.0"
