@@ -572,7 +572,6 @@ test("D3__Time tick timeTickInterval", () => {
   isDefined(interval, ())
 })
 
-
 test("D3__Time tick utcTicks", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setFullYear(2000.0)->Js.Date.fromFloat
