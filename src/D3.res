@@ -1,3 +1,6 @@
-include D3__Time
+module Time = {
+    include D3__Time
+}
 
-let a = Interval.timeSecond->Interval.every(2)
+
+let a = Time.timeSecond->Time.every(2)
