@@ -115,10 +115,10 @@ external round: (interval<_>, Js.Date.t) => Js.Date.t = "round"
 external ceil: (interval<_>, Js.Date.t) => Js.Date.t = "ceil"
 
 @send
-external offset: (interval<_>, Js.Date.t, option<int>) => Js.Date.t = "offset"
+external offset: (interval<_>, Js.Date.t, ~step: int=?, ()) => Js.Date.t = "offset"
 
 @send
-external range: (interval<_>, Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "range"
+external range: (interval<_>, ~start:Js.Date.t, ~stop: Js.Date.t, ~step:int=?, ()) => array<Js.Date.t> = "range"
 
 @send
 external filter: (interval<'t>, Js.Date.t => bool) => interval<'t> = "filter"
@@ -127,98 +127,99 @@ external filter: (interval<'t>, Js.Date.t => bool) => interval<'t> = "filter"
 external every: (interval<'t>, int) => interval<'t> = "every"
 
 @send
-external count: (interval<_>, Js.Date.t, Js.Date.t) => int = "count"
+external count: (interval<_>, ~start:Js.Date.t, ~end: Js.Date.t) => int = "count"
 
-@send
+@module("d3")
 external timeInterval: (
-  interval<_>,
-  (Js.Date.t, int) => unit,
-  option<(Js.Date.t, Js.Date.t) => int>,
-  option<Js.Date.t => int>,
+  ~floor: (Js.Date.t) => unit,
+  ~offset: (Js.Date.t, int) => unit,
+  ~count:(Js.Date.t, Js.Date.t) => int=?,
+  ~field:(Js.Date.t)=>int=?
 ) => interval<_> = "timeInterval"
 
+
 @module("d3")
-external timeMilliseconds: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> =
+external timeMilliseconds: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> =
   "timeMilliseconds"
 @module("d3")
-external utcMilliseconds: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> =
+external utcMilliseconds: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> =
   "utcMilliseconds"
 
 @module("d3")
-external timeSeconds: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "timeSeconds"
+external timeSeconds: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "timeSeconds"
 @module("d3")
-external utcSeconds: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "utcSeconds"
+external utcSeconds: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "utcSeconds"
 
 @module("d3")
-external timeMinutes: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "timeMinutes"
+external timeMinutes: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "timeMinutes"
 @module("d3")
-external utcMinutes: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "utcMinutes"
+external utcMinutes: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "utcMinutes"
 
 @module("d3")
-external timeHours: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "timeHours"
+external timeHours: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "timeHours"
 @module("d3")
-external utcHours: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "utcHours"
+external utcHours: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "utcHours"
 
 @module("d3")
-external timeDays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "timeDays"
+external timeDays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "timeDays"
 @module("d3")
-external utcDays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "utcDays"
+external utcDays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "utcDays"
 
 @module("d3")
-external timeWeeks: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "timeWeeks"
+external timeWeeks: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "timeWeeks"
 @module("d3")
-external utcWeeks: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "utcWeeks"
+external utcWeeks: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "utcWeeks"
 
 @module("d3")
-external timeSundays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "timeSundays"
+external timeSundays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "timeSundays"
 @module("d3")
-external utcSundays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "utcSundays"
+external utcSundays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "utcSundays"
 
 @module("d3")
-external timeMondays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "timeMondays"
+external timeMondays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "timeMondays"
 @module("d3")
-external utcMondays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "utcMondays"
+external utcMondays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "utcMondays"
 
 @module("d3")
-external timeTuesdays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "timeTuesdays"
+external timeTuesdays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "timeTuesdays"
 @module("d3")
-external utcTuesdays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "utcTuesdays"
+external utcTuesdays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "utcTuesdays"
 
 @module("d3")
-external timeWednesdays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "timeWednesdays"
+external timeWednesdays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "timeWednesdays"
 @module("d3")
-external utcWednesdays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "utcWednesdays"
+external utcWednesdays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "utcWednesdays"
 
 @module("d3")
-external timeThursdays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "timeThursdays"
+external timeThursdays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "timeThursdays"
 @module("d3")
-external utcThursdays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "utcThursdays"
+external utcThursdays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "utcThursdays"
 
 @module("d3")
-external timeFridays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "timeFridays"
+external timeFridays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "timeFridays"
 @module("d3")
-external utcFridays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "utcFridays"
+external utcFridays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "utcFridays"
 
 @module("d3")
-external timeSaturdays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "timeSaturdays"
+external timeSaturdays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "timeSaturdays"
 @module("d3")
-external utcSaturdays: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "utcSaturdays"
+external utcSaturdays: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "utcSaturdays"
 
 @module("d3")
-external timeMonths: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "timeMonths"
+external timeMonths: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "timeMonths"
 @module("d3")
-external utcMonths: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "utcMonths"
+external utcMonths: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "utcMonths"
 
 @module("d3")
-external timeYears: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "timeYears"
+external timeYears: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "timeYears"
 @module("d3")
-external utcYears: (Js.Date.t, Js.Date.t, option<int>) => array<Js.Date.t> = "utcYears"
+external utcYears: (~start:Js.Date.t, ~stop:Js.Date.t, ~step:int=?,()) => array<Js.Date.t> = "utcYears"
 
 @module("d3")
-external timeTicks: (Js.Date.t, Js.Date.t, int) =>  array<Js.Date.t> = "timeTicks"
+external timeTicks: (~start:Js.Date.t, ~stop:Js.Date.t, ~count:int) =>  array<Js.Date.t> = "timeTicks"
 @module("d3")
-external timeTickInterval: (Js.Date.t, Js.Date.t, int) => interval<_> = "timeTickInterval"
+external timeTickInterval: (~start:Js.Date.t, ~stop:Js.Date.t, ~count:int) => interval<_> = "timeTickInterval"
 @module("d3")
-external utcTicks: (Js.Date.t, Js.Date.t, int) => array<Js.Date.t> = "utcTicks"
+external utcTicks: (~start:Js.Date.t, ~stop:Js.Date.t, ~count:int) => array<Js.Date.t> = "utcTicks"
 @module("d3")
-external utcTickInterval: (Js.Date.t, Js.Date.t, int) => interval<_> = "utcTickInterval"
+external utcTickInterval: (~start:Js.Date.t, ~stop:Js.Date.t, ~count:int) => interval<_> = "utcTickInterval"

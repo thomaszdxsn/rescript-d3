@@ -193,7 +193,7 @@ test("D3__Time interval round", () => {
 
 test("D3__Time interval offset", () => {
   open D3
-  let dateStr = Time.timeSecond->Time.offset(Js.Date.make(), None)->Js.Date.toISOString
+  let dateStr = Time.timeSecond->Time.offset(Js.Date.make(), ())->Js.Date.toISOString
   isDate(dateStr, ())
 })
 
@@ -201,7 +201,7 @@ test("D3__Time interval range", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setHours(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setHours(2.0)->Js.Date.fromFloat
-  let dates = Time.timeSecond->Time.range(start, end, None)
+  let dates = Time.timeSecond->Time.range(~start=start, ~stop=end, ())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -220,12 +220,20 @@ test("D3__Time interval every", () => {
   isDefined(newInterval, ())
 })
 
+test("D3__Time interval count", () => {
+  open D3
+  let start = Js.Date.make()->Js.Date.setHours(1.0)->Js.Date.fromFloat
+  let end = Js.Date.make()->Js.Date.setHours(3.0)->Js.Date.fromFloat
+  let count = Time.timeHour->Time.count(~start=start, ~end=end)
+  isTrue(count === 2, ~message=count->Js.Int.toString ++" is count")
+})
+
 // Range tests
 test("D3__Time range timeMilliseconds", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setHours(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setHours(2.0)->Js.Date.fromFloat
-  let dates = Time.timeMilliseconds(start, end, None)
+  let dates = Time.timeMilliseconds(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -236,7 +244,7 @@ test("D3__Time range utcMilliseconds", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setHours(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setHours(2.0)->Js.Date.fromFloat
-  let dates = Time.utcMilliseconds(start, end, None)
+  let dates = Time.utcMilliseconds(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -247,7 +255,7 @@ test("D3__Time range timeSeconds", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setHours(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setHours(2.0)->Js.Date.fromFloat
-  let dates = Time.timeSeconds(start, end, None)
+  let dates = Time.timeSeconds(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -258,7 +266,7 @@ test("D3__Time range utcSeconds", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setHours(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setHours(2.0)->Js.Date.fromFloat
-  let dates = Time.utcSeconds(start, end, None)
+  let dates = Time.utcSeconds(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -269,7 +277,7 @@ test("D3__Time range timeMinutes", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setHours(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setHours(2.0)->Js.Date.fromFloat
-  let dates = Time.timeMinutes(start, end, None)
+  let dates = Time.timeMinutes(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -280,7 +288,7 @@ test("D3__Time range utcMinutes", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setHours(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setHours(2.0)->Js.Date.fromFloat
-  let dates = Time.utcMinutes(start, end, None)
+  let dates = Time.utcMinutes(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -291,7 +299,7 @@ test("D3__Time range timeHours", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setHours(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setHours(2.0)->Js.Date.fromFloat
-  let dates = Time.timeHours(start, end, None)
+  let dates = Time.timeHours(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -302,7 +310,7 @@ test("D3__Time range utcHours", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setHours(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setHours(2.0)->Js.Date.fromFloat
-  let dates = Time.utcHours(start, end, None)
+  let dates = Time.utcHours(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -313,7 +321,7 @@ test("D3__Time range timeDays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.timeDays(start, end, None)
+  let dates = Time.timeDays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -324,7 +332,7 @@ test("D3__Time range utcDays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.utcDays(start, end, None)
+  let dates = Time.utcDays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -335,7 +343,7 @@ test("D3__Time range timeWeeks", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.timeWeeks(start, end, None)
+  let dates = Time.timeWeeks(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -346,7 +354,7 @@ test("D3__Time range utcWeeks", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.utcWeeks(start, end, None)
+  let dates = Time.utcWeeks(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -357,7 +365,7 @@ test("D3__Time range timeSundays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.timeSundays(start, end, None)
+  let dates = Time.timeSundays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -368,7 +376,7 @@ test("D3__Time range utcSundays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.utcSundays(start, end, None)
+  let dates = Time.utcSundays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -379,7 +387,7 @@ test("D3__Time range timeMondays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.timeMondays(start, end, None)
+  let dates = Time.timeMondays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -390,7 +398,7 @@ test("D3__Time range utcMondays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.utcMondays(start, end, None)
+  let dates = Time.utcMondays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -401,7 +409,7 @@ test("D3__Time range timeTuesdays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.timeTuesdays(start, end, None)
+  let dates = Time.timeTuesdays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -412,7 +420,7 @@ test("D3__Time range utcTuesdays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.utcTuesdays(start, end, None)
+  let dates = Time.utcTuesdays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -423,7 +431,7 @@ test("D3__Time range timeWednesdays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.timeWednesdays(start, end, None)
+  let dates = Time.timeWednesdays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -434,7 +442,7 @@ test("D3__Time range utcWednesdays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.utcWednesdays(start, end, None)
+  let dates = Time.utcWednesdays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -445,7 +453,7 @@ test("D3__Time range timeThursdays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.timeThursdays(start, end, None)
+  let dates = Time.timeThursdays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -456,7 +464,7 @@ test("D3__Time range utcThursdays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.utcThursdays(start, end, None)
+  let dates = Time.utcThursdays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -467,7 +475,7 @@ test("D3__Time range timeFridays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.timeFridays(start, end, None)
+  let dates = Time.timeFridays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -478,7 +486,7 @@ test("D3__Time range utcFridays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.utcFridays(start, end, None)
+  let dates = Time.utcFridays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -489,7 +497,7 @@ test("D3__Time range timeSaturdays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.timeSaturdays(start, end, None)
+  let dates = Time.timeSaturdays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -500,7 +508,7 @@ test("D3__Time range utcSaturdays", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setDate(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setDate(30.0)->Js.Date.fromFloat
-  let dates = Time.utcSaturdays(start, end, None)
+  let dates = Time.utcSaturdays(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -511,7 +519,7 @@ test("D3__Time range timeMonths", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setMonth(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setMonth(10.0)->Js.Date.fromFloat
-  let dates = Time.timeMonths(start, end, None)
+  let dates = Time.timeMonths(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -522,7 +530,7 @@ test("D3__Time range utcMonths", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setMonth(1.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setMonth(10.0)->Js.Date.fromFloat
-  let dates = Time.utcMonths(start, end, None)
+  let dates = Time.utcMonths(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -533,7 +541,7 @@ test("D3__Time range timeYears", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setFullYear(2000.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setFullYear(2020.0)->Js.Date.fromFloat
-  let dates = Time.timeYears(start, end, None)
+  let dates = Time.timeYears(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -544,7 +552,7 @@ test("D3__Time range utcYears", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setFullYear(2000.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setFullYear(2020.0)->Js.Date.fromFloat
-  let dates = Time.utcYears(start, end, None)
+  let dates = Time.utcYears(~start=start,~stop=end,())
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -557,7 +565,7 @@ test("D3__Time tick timeTicks", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setFullYear(2000.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setFullYear(2020.0)->Js.Date.fromFloat
-  let dates = Time.timeTicks(start, end, 2)
+  let dates = Time.timeTicks(~start=start, ~stop=end, ~count=2)
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -568,7 +576,7 @@ test("D3__Time tick timeTickInterval", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setFullYear(2000.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setFullYear(2020.0)->Js.Date.fromFloat
-  let interval = Time.timeTickInterval(start, end, 2)
+  let interval = Time.timeTickInterval(~start=start, ~stop=end, ~count=2)
   isDefined(interval, ())
 })
 
@@ -576,7 +584,7 @@ test("D3__Time tick utcTicks", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setFullYear(2000.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setFullYear(2020.0)->Js.Date.fromFloat
-  let dates = Time.utcTicks(start, end, 2)
+  let dates = Time.utcTicks(~start=start, ~stop=end, ~count=2)
   isTrue(dates->Js.Array2.length > 0)
   dates
   ->Js.Array2.slice(~start=0, ~end_=3)
@@ -587,6 +595,6 @@ test("D3__Time tick utcTickInterval", () => {
   open D3
   let start = Js.Date.make()->Js.Date.setFullYear(2000.0)->Js.Date.fromFloat
   let end = Js.Date.make()->Js.Date.setFullYear(2020.0)->Js.Date.fromFloat
-  let interval = Time.utcTickInterval(start, end, 2)
+  let interval = Time.utcTickInterval(~start=start, ~stop=end, ~count=2)
   isDefined(interval, ())
 })
