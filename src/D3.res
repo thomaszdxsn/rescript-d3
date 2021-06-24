@@ -9,3 +9,7 @@ module TimeFormat = {
 module Timer = {
   include D3_Timer
 }
+
+module Selection = {
+  include D3_Selection
+}
