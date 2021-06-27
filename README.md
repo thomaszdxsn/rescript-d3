@@ -2,7 +2,7 @@
 
 - [x] D3_Time
 - [x] D3_Time_Format
-- [x] D3_Timer
+- [ ] D3_Timer
 - [ ] D3_Scale
 - [ ] D3_Axis
 - [ ] D3_Scale_Chromatica
@@ -35,33 +35,11 @@
 
 ### d3-time (D3_Time)
 
-> [d3-time](https://github.com/d3/d3-time) has full specification
+> The specific usage please refer to [d3-time](https://github.com/d3/d3-time)
 
 ```rescript
 open D3
 let ceil = Time.timeDay->Time.ceil(Js.Date.make())
 Js.log(ceil)
 // 2021-06-21T00:00:00.000Z
-```
-
-### d3-timer (D3_Timer)
-
-> [d3-timer](https://github.com/d3/d3-timer) has full specification
-
-```rescript
-open D3
-let timer = Timer.timer(~callback=elapsed=> elapsed < 200 ? Js.log(elapsed) : timer->Timer.stop)
-```
-
-
-### d3-time-format (D3_Time_Format)
-
-> [d3-time-format](https://github.com/d3/d3-time-format)
-
-```rescript
-open D3
-
-let parser = "%Y-%m-%d"->TimeFormat.timeParse
-let isoString = "2021-06-23"->parser->Js.Date.toISOString
-Js.log(isoString)
 ```
