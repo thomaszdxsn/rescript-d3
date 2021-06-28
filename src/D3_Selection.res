@@ -69,21 +69,27 @@ external setAttr: (
   ],
 ) => selection = "attr"
 
-@send
-external hasClassesInFirstSelection: (selection, ~classNames: string) => bool = "classed"
 
-@send
-external setClassesForAllSelection: (selection, ~classNames: string, ~assign: bool) => selection =
-  "classed"
+/*
+    Do not use this APIs to operate DOMs, just use DOM APIs
+*/
 
-@send
-external getStyle: (selection, ~styleName: string) => string = "style"
+// @send
+// external hasClassesInFirstSelection: (selection, ~classNames: string) => bool = "classed"
 
-@send
-external setStyle: (selection, ~styleName: string, ~styleValue: string) => selection = "style"
+// @send
+// external setClassesForAllSelection: (selection, ~classNames: string, ~assign: bool) => selection =
+//   "classed"
 
-@send
-external getProperty: (selection, ~properyName:string) => string = "property"
+// @send
+// external getStyle: (selection, ~styleName: string) => string = "style"
 
-@send
-external setProperty: (selection, ~propertyName:string, ~propertyValue: string) => selection = "property"
+// @send
+// external setStyle: (selection, ~styleName: string, ~styleValue: string) => selection = "style"
+
+// @send
+// external getProperty: (selection, ~properyName: string) => string = "property"
+
+// @send
+// external setProperty: (selection, ~propertyName: string, ~propertyValue: string) => selection =
+//   "property"
