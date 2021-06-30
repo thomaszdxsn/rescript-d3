@@ -21,3 +21,7 @@ module Scale = {
 module Interpolate = {
   include D3_Interpolate
 }
+
+module Array = {
+  include D3_Array
+}
