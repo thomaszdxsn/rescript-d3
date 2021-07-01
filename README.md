@@ -3,7 +3,7 @@
 - [x] D3_Time
 - [x] D3_Time_Format
 - [x] D3_Timer
-- [ ] D3_Scale
+- [x] D3_Scale
 - [ ] D3_Axis
 - [ ] D3_Scale_Chromatica
 - [ ] D3_Selection
@@ -28,7 +28,7 @@
 - [ ] D3_Color
 - [ ] D3_Chord
 - [ ] D3_Brush
-- [ ] D3_Array
+- [x] D3_Array
 - [ ] D3_Fetch
 
 ## Usage
