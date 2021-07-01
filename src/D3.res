@@ -25,3 +25,7 @@ module Interpolate = {
 module Array = {
   include D3_Array
 }
+
+module Axis = {
+  include D3_Axis
+}

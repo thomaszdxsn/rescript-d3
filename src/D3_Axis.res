@@ -52,10 +52,10 @@ external getTickSizeOuter: t => int = "tickSizeOuter"
 external setTickPadding: (t, int) => t = "tickPadding"
 
 @send
-external getTickPadding: (t) => int = "tickPadding"
+external getTickPadding: t => int = "tickPadding"
 
 @send
 external setOffset: (t, float) => t = "offset"
 
 @send
-external getOffset: (t) => float = "offset"
+external getOffset: t => float = "offset"

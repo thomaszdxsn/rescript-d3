@@ -37,10 +37,10 @@ module LinearScale = {
   external setClamp: (t<_>, bool) => t<_> = "clamp"
 
   @send
-  external getInterpolate: t<_> => D3_Interpolate.t = "interpolate"
+  external getInterpolate: t<_> => D3_Interpolate.t<_> = "interpolate"
 
   @send
-  external setInterpolate: (t<_>, D3_Interpolate.t) => t<_> = "interpolate"
+  external setInterpolate: (t<_>, D3_Interpolate.t<_>) => t<_> = "interpolate"
 
   @send
   external ticks: (t<'d, _>, ~count: int=?) => array<'d> = "ticks"
@@ -99,10 +99,10 @@ module PowerScale = {
   external setClamp: (t<_>, bool) => t<_> = "clamp"
 
   @send
-  external getInterpolate: t<_> => D3_Interpolate.t = "interpolate"
+  external getInterpolate: t<_> => D3_Interpolate.t<_> = "interpolate"
 
   @send
-  external setInterpolate: (t<_>, D3_Interpolate.t) => t<_> = "interpolate"
+  external setInterpolate: (t<_>, D3_Interpolate.t<_>) => t<_> = "interpolate"
 
   @send
   external ticks: (t<'d, _>, ~count: int=?) => array<'d> = "ticks"
@@ -152,10 +152,10 @@ module LogScale = {
   external setClamp: (t<_>, bool) => t<_> = "clamp"
 
   @send
-  external getInterpolate: t<_> => D3_Interpolate.t = "interpolate"
+  external getInterpolate: t<_> => D3_Interpolate.t<_> = "interpolate"
 
   @send
-  external setInterpolate: (t<_>, D3_Interpolate.t) => t<_> = "interpolate"
+  external setInterpolate: (t<_>, D3_Interpolate.t<_>) => t<_> = "interpolate"
 
   @send
   external ticks: (t<'d, _>, ~count: int=?) => array<'d> = "ticks"
@@ -211,10 +211,10 @@ module SymlogScale = {
   external setClamp: (t<_>, bool) => t<_> = "clamp"
 
   @send
-  external getInterpolate: t<_> => D3_Interpolate.t = "interpolate"
+  external getInterpolate: t<_> => D3_Interpolate.t<_> = "interpolate"
 
   @send
-  external setInterpolate: (t<_>, D3_Interpolate.t) => t<_> = "interpolate"
+  external setInterpolate: (t<_>, D3_Interpolate.t<_>) => t<_> = "interpolate"
 
   @send
   external ticks: (t<'d, _>, ~count: int=?) => array<'d> = "ticks"
@@ -350,10 +350,10 @@ module TimeScale = {
   external setClamp: (t<_>, bool) => t<_> = "clamp"
 
   @send
-  external getInterpolate: t<_> => D3_Interpolate.t = "interpolate"
+  external getInterpolate: t<_> => D3_Interpolate.t<_> = "interpolate"
 
   @send
-  external setInterpolate: (t<_>, D3_Interpolate.t) => t<_> = "interpolate"
+  external setInterpolate: (t<_>, D3_Interpolate.t<_>) => t<_> = "interpolate"
 
   @send
   external ticks: (
@@ -429,10 +429,10 @@ module SequentialScale = {
   external setClamp: (t<_>, bool) => t<_> = "clamp"
 
   @send
-  external getInterpolate: t<_> => D3_Interpolate.t = "interpolator"
+  external getInterpolate: t<_> => D3_Interpolate.t<_> = "interpolator"
 
   @send
-  external setInterpolate: (t<_>, D3_Interpolate.t) => t<_> = "interpolator"
+  external setInterpolate: (t<_>, D3_Interpolate.t<_>) => t<_> = "interpolator"
 
   @send
   external copy: t<_> => t<_> = "copy"
