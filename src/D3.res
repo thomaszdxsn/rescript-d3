@@ -29,3 +29,7 @@ module Array = {
 module Axis = {
   include D3_Axis
 }
+
+module Shape = {
+  include D3_Shape
+}
