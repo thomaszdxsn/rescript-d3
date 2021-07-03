@@ -37,3 +37,7 @@ module Shape = {
 module Path = {
   include D3_Path
 }
+
+module Polygon = {
+  include D3_Polygon
+}
