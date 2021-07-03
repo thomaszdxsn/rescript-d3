@@ -33,3 +33,7 @@ module Axis = {
 module Shape = {
   include D3_Shape
 }
+
+module Path = {
+  include D3_Path
+}
