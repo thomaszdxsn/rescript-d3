@@ -347,3 +347,30 @@ module AreaRadial = {
   @send
   external setCurve: (t<'a>, Curve.curveFactory) => t<'a> = "curve"
 }
+
+module Link = {
+  type datum = {
+    source: vector2d,
+    target: vector2d,
+  }
+  type t = datum => string
+
+  @module("d3")
+  external linkVertical: t = "linkVertical"
+
+  @module("d3")
+  external linkHorizontal: t = "linkHorizontal"
+
+  @send
+  external getContext: t => canvasContext2D = "context"
+
+  @send
+  external setContext: (t, Js.null<canvasContext2D>) => t = "context"
+}
+
+module LinkRadial = {
+  type t = vector2d => string
+
+  @module("d3")
+  external make: t = "linkRadial"
+}
