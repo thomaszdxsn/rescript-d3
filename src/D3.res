@@ -41,3 +41,7 @@ module Path = {
 module Polygon = {
   include D3_Polygon
 }
+
+module Hierarchy = {
+  include D3_Hierarchy
+}
