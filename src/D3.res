@@ -45,3 +45,7 @@ module Polygon = {
 module Hierarchy = {
   include D3_Hierarchy
 }
+
+module Fetch = {
+  include D3_Fetch
+}
