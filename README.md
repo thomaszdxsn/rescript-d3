@@ -4,32 +4,32 @@
 - [x] D3_Time_Format
 - [x] D3_Timer
 - [x] D3_Scale
-- [ ] D3_Axis
-- [ ] D3_Scale_Chromatica
-- [ ] D3_Selection
-- [ ] D3_Transition
-- [ ] D3_Zoom
-- [ ] D3_Shape
-- [ ] D3_Random
-- [ ] D3_Quadtree
-- [ ] D3_Polygon
-- [ ] D3_Path
-- [ ] D3_Interpolate
-- [ ] D3_Hierarchy
-- [ ] D3_Geo
-- [ ] D3_Format
-- [ ] D3_Force
-- [ ] D3_Easy
-- [ ] D3_Dsv
-- [ ] D3_Drag
-- [ ] D3_Dispatch
-- [ ] D3_Delaunay
-- [ ] D3_Contour
-- [ ] D3_Color
-- [ ] D3_Chord
-- [ ] D3_Brush
+- [x] D3_Axis
+- [x] D3_Scale_Chromatica
+- [x] D3_Selection
+- [x] D3_Transition
+- [x] D3_Zoom
+- [x] D3_Shape
+- [x] D3_Random
+- [x] D3_Quadtree
+- [x] D3_Polygon
+- [x] D3_Path
+- [x] D3_Interpolate
+- [x] D3_Hierarchy
+- [x] D3_Geo
+- [x] D3_Format
+- [x] D3_Force
+- [x] D3_Easy
+- [x] D3_Dsv
+- [x] D3_Drag
+- [x] D3_Dispatch
+- [x] D3_Delaunay
+- [x] D3_Contour
+- [x] D3_Color
+- [x] D3_Chord
+- [x] D3_Brush
 - [x] D3_Array
-- [ ] D3_Fetch
+- [x] D3_Fetch
 
 ## Usage
 
